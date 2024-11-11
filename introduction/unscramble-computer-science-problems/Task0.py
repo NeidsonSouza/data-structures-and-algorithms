@@ -22,6 +22,31 @@ Print messages:
 
 from datetime import datetime
 
-text_ordered_list = sorted(texts, key=lambda x: datetime.strptime(x[2], '%d-%m-%Y %H:%M:%S'))[0]
-text_final_string = f'First record of texts, {text_ordered_list[0]} texts {text_ordered_list[1]} at time {text_ordered_list[2]}'
-print(text_final_string)
+def get_ordered_list_by_date(out_of_order_list):
+    return sorted(
+        out_of_order_list,
+        key=lambda x: datetime.strptime(x[2], '%d-%m-%Y %H:%M:%S')
+        )
+
+def get_call_last_record():
+    return get_ordered_list_by_date(calls)[-1]
+
+
+
+if __name__ == '__main__':
+    first_text_record = get_ordered_list_by_date(texts)[0]
+    last_call_record = get_ordered_list_by_date(calls)[-1]
+
+    text_str = (
+        f'First record of texts, {first_text_record[0]} '
+        f'texts {first_text_record[1]} at time {first_text_record[2]}'
+        )
+    
+    call_str = (
+        f'Last record of calls, {last_call_record[0]} '
+        f'calls {last_call_record[1]} at time {last_call_record[2]}, '
+        f'lasting {last_call_record[3]} seconds'
+    )
+
+    print(text_str)
+    print(call_str)
