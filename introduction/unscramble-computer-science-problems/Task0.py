@@ -22,6 +22,7 @@ Print messages:
 
 from datetime import datetime
 
+
 def get_ordered_list_by_date(out_of_order_list):
     return sorted(
         out_of_order_list,
@@ -30,7 +31,6 @@ def get_ordered_list_by_date(out_of_order_list):
 
 def get_call_last_record():
     return get_ordered_list_by_date(calls)[-1]
-
 
 
 if __name__ == '__main__':
