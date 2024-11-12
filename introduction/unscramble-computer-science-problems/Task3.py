@@ -75,7 +75,8 @@ def task_a():
                     uniq_code_and_prefixes.append(mobile_prefix)
             if is_080_in_record_dst(item):
                 count += 1
-    print(f'The numbers called by people in Bangalore have codes: {sorted(uniq_code_and_prefixes)}')
+    print(f'The numbers called by people in Bangalore have codes:')
+    print(*sorted(uniq_code_and_prefixes),sep='\n')
     return count
             
 
