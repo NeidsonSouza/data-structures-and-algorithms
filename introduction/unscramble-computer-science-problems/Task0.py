@@ -29,9 +29,6 @@ def get_ordered_list_by_date(out_of_order_list):
         key=lambda x: datetime.strptime(x[2], '%d-%m-%Y %H:%M:%S')
         )
 
-def get_call_last_record():
-    return get_ordered_list_by_date(calls)[-1]
-
 
 if __name__ == '__main__':
     first_text_record = get_ordered_list_by_date(texts)[0]
