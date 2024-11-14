@@ -19,21 +19,16 @@ Print a message:
 "There are <count> different telephone numbers in the records."
 """
 
-def add_to_list(item, ls):
-    if item not in ls:
-        ls.append(item)
-
-
-def get_uniq_numbers(records, uniqs):
-    for item in records:
-        add_to_list(item[0], uniqs)
-        add_to_list(item[1], uniqs)
-
-    return uniqs
+def add_unique_values_into_set(records, unique_values):
+    for record in records:
+        unique_values.add(record[0])
+        unique_values.add(record[1])
 
 if __name__ == "__main__":
-    uniqs = get_uniq_numbers(texts, [])
-    uniqs = get_uniq_numbers(calls, uniqs)
+    unique_tele_nums = set()
 
-    sentence = f'There are {len(uniqs)} different telephone numbers in the records.'
+    add_unique_values_into_set(calls, unique_tele_nums)
+    add_unique_values_into_set(texts, unique_tele_nums)
+
+    sentence = f'There are {len(unique_tele_nums)} different telephone numbers in the records.'
     print(sentence)
