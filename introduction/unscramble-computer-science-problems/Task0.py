@@ -34,16 +34,12 @@ if __name__ == '__main__':
     first_text_record = get_ordered_list_by_date(texts)[0]
     last_call_record = get_ordered_list_by_date(calls)[-1]
 
-    text_str = (
-        f'First record of texts, {first_text_record[0]} '
-        f'texts {first_text_record[1]} at time {first_text_record[2]}'
+    print(
+        'First record of texts, {0} texts {1} at time {2}'
+        .format(*first_text_record)
         )
     
-    call_str = (
-        f'Last record of calls, {last_call_record[0]} '
-        f'calls {last_call_record[1]} at time {last_call_record[2]}, '
-        f'lasting {last_call_record[3]} seconds'
-    )
-
-    print(text_str)
-    print(call_str)
+    print(
+        'Last record of calls, {0} calls {1} at time {2}, lasting {3} seconds'
+        .format(*last_call_record)
+        )
