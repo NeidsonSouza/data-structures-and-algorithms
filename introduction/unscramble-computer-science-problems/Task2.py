@@ -20,15 +20,15 @@ Print a message:
 September 2016.".
 """
 
-def get_ordered_list_by_date(out_of_order_list):
-    return sorted(out_of_order_list, key=lambda x: int(x[3]))
-
 if __name__ == '__main__':
-    longest_call = get_ordered_list_by_date(calls)[-1]
+    phone_dict = {}
 
-    call_str = (
-        f'{longest_call[0]} spent the longest time, '
-        f'{longest_call[3]} seconds, on the phone during September 2016.'
-    )
+    for call in calls:
+        phone_dict[call[0]] = phone_dict.get(call[0], 0) + int(call[3])
+        phone_dict[call[1]] = phone_dict.get(call[1], 0) + int(call[3])
 
-    print(call_str)
+    call_durations = list(phone_dict.values())
+    longest_time   = max(call_durations)
+    id             = call_durations.index(longest_time)
+    
+    print(f'{list(phone_dict.keys())[id]} spent the longest time, {longest_time} seconds, on the phone during September 2016.')
