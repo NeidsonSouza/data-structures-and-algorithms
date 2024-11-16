@@ -45,33 +45,41 @@ to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
 
+
 def main():
     fixed_line_prefixes = set()
-    mobile_prefixes     = set()
+    mobile_prefixes = set()
 
-    count_bang_to_all  = 0
+    count_bang_to_all = 0
     count_bang_to_bang = 0
 
     for record in calls:
         src_num = record[0]
         dst_num = record[1]
-        if src_num.startswith('(080)'):
+        if src_num.startswith("(080)"):
             count_bang_to_all += 1
-            if dst_num.startswith('('):
-                fixed_line_prefixes.add(dst_num[:dst_num.find(')')+1])
-                if dst_num.startswith('(080)'):
+            if dst_num.startswith("("):
+                fixed_line_prefixes.add(dst_num[: dst_num.find(")") + 1])
+                if dst_num.startswith("(080)"):
                     count_bang_to_bang += 1
-            elif dst_num.__contains__(' '):
-                mobile_prefixes.add(dst_num[:dst_num.find(' ')])
+            elif dst_num.__contains__(" "):
+                mobile_prefixes.add(dst_num[: dst_num.find(" ")])
 
     codes = fixed_line_prefixes.union(mobile_prefixes)
-    print('The numbers called by people in Bangalore have codes:', *sorted(codes), sep='\n')
+    percentage = round((count_bang_to_bang / count_bang_to_all) * 100, 2)
+
     print(
-        '{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.'
+        "The numbers called by people in Bangalore have codes:",
+        *sorted(codes),
+        sep="\n"
+    )
+    print(
+        "{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore."
         .format(
-            round((count_bang_to_bang / count_bang_to_all) * 100, 2)
+            percentage
         )
     )
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

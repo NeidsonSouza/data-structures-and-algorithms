@@ -20,6 +20,7 @@ Print messages:
 "Last record of calls, <incoming number> calls <answering number> at time <time>, lasting <during> seconds"
 """
 
+
 from datetime import datetime
 
 
@@ -30,16 +31,19 @@ def get_ordered_list_by_date(out_of_order_list):
         )
 
 
-if __name__ == '__main__':
+def main():
     first_text_record = get_ordered_list_by_date(texts)[0]
-    last_call_record = get_ordered_list_by_date(calls)[-1]
+    last_call_record  = get_ordered_list_by_date(calls)[-1]
 
     print(
         'First record of texts, {0} texts {1} at time {2}'
         .format(*first_text_record)
         )
-    
     print(
         'Last record of calls, {0} calls {1} at time {2}, lasting {3} seconds'
         .format(*last_call_record)
         )
+
+
+if __name__ == '__main__':
+    main()

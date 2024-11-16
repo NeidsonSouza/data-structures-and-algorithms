@@ -19,16 +19,23 @@ Print a message:
 "There are <count> different telephone numbers in the records."
 """
 
+
 def add_unique_values_into_set(records, unique_values):
     for record in records:
         unique_values.add(record[0])
         unique_values.add(record[1])
 
-if __name__ == "__main__":
+
+def main():
     unique_tele_nums = set()
 
     add_unique_values_into_set(calls, unique_tele_nums)
     add_unique_values_into_set(texts, unique_tele_nums)
 
-    sentence = f'There are {len(unique_tele_nums)} different telephone numbers in the records.'
-    print(sentence)
+    print(
+        f"There are {len(unique_tele_nums)} different telephone numbers in the records."
+    )
+
+
+if __name__ == "__main__":
+    main()

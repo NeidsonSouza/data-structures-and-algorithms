@@ -20,7 +20,8 @@ Print a message:
 September 2016.".
 """
 
-if __name__ == '__main__':
+
+def main():
     phone_dict = {}
 
     for call in calls:
@@ -30,5 +31,12 @@ if __name__ == '__main__':
     call_durations = list(phone_dict.values())
     longest_time   = max(call_durations)
     id             = call_durations.index(longest_time)
-    
-    print(f'{list(phone_dict.keys())[id]} spent the longest time, {longest_time} seconds, on the phone during September 2016.')
+
+    print(
+        "{} spent the longest time, {} seconds, on the phone during September 2016."
+        .format(list(phone_dict.keys())[id], longest_time)
+    )
+
+
+if __name__ == "__main__":
+    main()
