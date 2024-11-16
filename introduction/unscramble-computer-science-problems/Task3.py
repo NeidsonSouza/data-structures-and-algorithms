@@ -45,46 +45,33 @@ to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
 
-def is_080_in_record_src(record):
-    return True if '(080)' in record[0] else False
+def main():
+    fixed_line_prefixes = set()
+    mobile_prefixes     = set()
 
-def is_dst_mobile(record):
-    return True if '(' in record[1] else False
+    count_bang_to_all  = 0
+    count_bang_to_bang = 0
 
-def is_dst_fixed_line(record):
-    return True if ' ' in record[1] else False
+    for record in calls:
+        src_num = record[0]
+        dst_num = record[1]
+        if src_num.startswith('(080)'):
+            count_bang_to_all += 1
+            if dst_num.startswith('('):
+                fixed_line_prefixes.add(dst_num[:dst_num.find(')')+1])
+                if dst_num.startswith('(080)'):
+                    count_bang_to_bang += 1
+            elif dst_num.__contains__(' '):
+                mobile_prefixes.add(dst_num[:dst_num.find(' ')])
 
-def is_080_in_record_dst(record):
-    return True if '(080)' in record[1] else False
-
-
-
-def task_a():
-    uniq_code_and_prefixes = []
-    count = 0
-
-    for item in calls:
-        if is_080_in_record_src(item):
-            if is_dst_mobile(item):
-                code_area = item[1][1:4]
-                if code_area not in uniq_code_and_prefixes:
-                    uniq_code_and_prefixes.append(code_area)
-            elif is_dst_fixed_line(item):
-                mobile_prefix = item[1][:4]
-                if mobile_prefix not in uniq_code_and_prefixes:
-                    uniq_code_and_prefixes.append(mobile_prefix)
-            if is_080_in_record_dst(item):
-                count += 1
-    print(f'The numbers called by people in Bangalore have codes:')
-    print(*sorted(uniq_code_and_prefixes),sep='\n')
-    return count
-            
-
+    codes = fixed_line_prefixes.union(mobile_prefixes)
+    print('The numbers called by people in Bangalore have codes:', *sorted(codes), sep='\n')
+    print(
+        '{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.'
+        .format(
+            round((count_bang_to_bang / count_bang_to_all) * 100, 2)
+        )
+    )
 
 if __name__ == '__main__':
-    bangalore_to_bangalore = task_a()
-    print(
-        f'{round((bangalore_to_bangalore / len(calls)) * 100, 2)} '
-        'percent of calls from fixed lines in Bangalore are calls '
-        'to other fixed lines in Bangalore.'
-    )
+    main()
