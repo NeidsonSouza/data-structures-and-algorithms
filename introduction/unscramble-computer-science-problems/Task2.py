@@ -21,7 +21,7 @@ September 2016.".
 """
 
 
-def main():
+def get_longest_call_duration_record():
     phone_dict = {}
 
     for call in calls:
@@ -32,10 +32,19 @@ def main():
     longest_time   = max(call_durations)
     id             = call_durations.index(longest_time)
 
+    return list(phone_dict.keys())[id], longest_time
+
+
+def print_sentence(record_data):
     print(
         "{} spent the longest time, {} seconds, on the phone during September 2016."
-        .format(list(phone_dict.keys())[id], longest_time)
+        .format(*record_data)
     )
+
+
+def main():
+    record_data = get_longest_call_duration_record()
+    print_sentence(record_data)
 
 
 if __name__ == "__main__":

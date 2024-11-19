@@ -45,8 +45,11 @@ to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
 
+def get_percentage(count_bang_to_bang, count_bang_to_all):
+    return round((count_bang_to_bang / count_bang_to_all) * 100, 2)
 
-def main():
+
+def get_codes():
     fixed_line_prefixes = set()
     mobile_prefixes = set()
 
@@ -66,8 +69,11 @@ def main():
                 mobile_prefixes.add(dst_num[: dst_num.find(" ")])
 
     codes = fixed_line_prefixes.union(mobile_prefixes)
-    percentage = round((count_bang_to_bang / count_bang_to_all) * 100, 2)
 
+    return codes, count_bang_to_bang, count_bang_to_all
+
+
+def print_sentence(codes, percentage):
     print(
         "The numbers called by people in Bangalore have codes:",
         *sorted(codes),
@@ -79,6 +85,12 @@ def main():
             percentage
         )
     )
+
+
+def main():
+    codes, count_bang_to_bang, count_bang_to_all = get_codes()
+    percentage = get_percentage(count_bang_to_bang, count_bang_to_all)
+    print_sentence(codes, percentage)
 
 
 if __name__ == "__main__":
