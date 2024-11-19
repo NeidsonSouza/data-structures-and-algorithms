@@ -24,12 +24,12 @@
 
 **Description**: The problem involves finding the telephone number that spent the longest time on the phone during the period.
 
-**Approach**: Order call records by call duration, then pick the latest record on the sorted list.
+**Approach**: Iterate through the records twice: first, save the caller and receiver phone numbers along with their respective call durations in a set to get unique phone numbers. During the second iteration, determine the longest call duration and its corresponding phone number.
 
 **Complexity Analysis**:
-- **Algorithm**: The call records were ordered using the `sorted()` built-in Python function and passing a lambda function that returns the duration (last column) of the record as the key of the `sorted()` function.
-- **Big O Notation**: `sorted()` has $O(n$ $log$ $n)$ as worst-case performance where n is the number of elements in the list.
-- **Justification**: The `sorted()` function uses less memory than the quicksort approach.
+- **Algorithm**: Two loops run through each record. The first loop sends unique values and the sum of calls for each number to a `set()`, and the second loop gets the phone number and the duration of the longest time record.
+- **Big O Notation**: $O(2n)$ where $n$ is the number of elements in total.
+- **Justification**: Each element is accessed twice; hence, the time complexity is directly proportional to the amount of records.
 
 ## Task3
 
