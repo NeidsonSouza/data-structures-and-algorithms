@@ -28,11 +28,14 @@ def get_longest_call_duration_record():
         phone_dict[call[0]] = phone_dict.get(call[0], 0) + int(call[3])
         phone_dict[call[1]] = phone_dict.get(call[1], 0) + int(call[3])
 
-    call_durations = list(phone_dict.values())
-    longest_time   = max(call_durations)
-    id             = call_durations.index(longest_time)
+    longest_time = 0
 
-    return list(phone_dict.keys())[id], longest_time
+    for key, value in phone_dict.items():
+        if value > longest_time:
+            longest_time = value
+            tele_num = key
+
+    return tele_num, longest_time
 
 
 def print_sentence(record_data):
