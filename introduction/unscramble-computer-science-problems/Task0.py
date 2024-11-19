@@ -31,7 +31,7 @@ def get_ordered_list_by_date(out_of_order_list):
         )
 
 
-def print_sentences(first_text_record, last_call_record):
+def print_sentence(first_text_record, last_call_record):
     print(
         'First record of texts, {0} texts {1} at time {2}'
         .format(*first_text_record)
@@ -46,7 +46,7 @@ def print_sentences(first_text_record, last_call_record):
 def main():
     first_text_record = get_ordered_list_by_date(texts)[0]
     last_call_record  = get_ordered_list_by_date(calls)[-1]
-    print_sentences(first_text_record, last_call_record)
+    print_sentence(first_text_record, last_call_record)
 
 
 if __name__ == '__main__':

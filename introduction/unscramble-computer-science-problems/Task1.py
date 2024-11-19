@@ -26,15 +26,18 @@ def add_unique_values_into_set(records, unique_values):
         unique_values.add(record[1])
 
 
+def print_sentence(unique_tele_nums):
+    print(
+        f"There are {len(unique_tele_nums)} different telephone numbers in the records."
+    )
+
+
 def main():
     unique_tele_nums = set()
 
     add_unique_values_into_set(calls, unique_tele_nums)
     add_unique_values_into_set(texts, unique_tele_nums)
-
-    print(
-        f"There are {len(unique_tele_nums)} different telephone numbers in the records."
-    )
+    print_sentence(unique_tele_nums)
 
 
 if __name__ == "__main__":
