@@ -13,7 +13,7 @@
 
 **Description**: The problem involves calculating how many different telephone numbers are there in the records.
 
-**Approach**: Iterate through the records a single time, saving the telephone numbers of that specific position in the list if it wasn't found in any of the loops before.
+**Approach**: Iterate through the records a single time, saving the telephone numbers of that specific position in a set that automatically avoids adding repetitive items.
 
 **Complexity Analysis**:
 - **Algorithm**: A single loop runs through each element of each record.
