@@ -66,7 +66,7 @@ def get_codes():
                 if dst_num.startswith("(080)"):
                     count_bang_to_bang += 1
             elif dst_num.__contains__(" "):
-                mobile_prefixes.add(dst_num[: dst_num.find(" ")])
+                mobile_prefixes.add(dst_num[:4])
 
     codes = fixed_line_prefixes.union(mobile_prefixes)
 

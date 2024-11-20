@@ -43,7 +43,7 @@ def get_tele():
 
 def print_sentence(tele):
     print("These numbers could be telemarketers:")
-    print(*tele, sep="\n")
+    print(*sorted(tele), sep="\n")
 
 
 def main():

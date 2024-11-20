@@ -39,8 +39,8 @@
 
 **Complexity Analysis**:
 - **Algorithm**: A single loop runs through each call record, then order it using `sorted()` built-in function.
-- **Big O Notation**: $O(n)$ where $n$ is the number of elements in total.
-- **Justification**: Each element is accessed once; hence, the time complexity is directly proportional to the amount of records.
+- **Big O Notation**: $O(n$ $log$ $n)$ where $n$ is the number of elements in total.
+- **Justification**: The `sorted()` method takes has $O(n$ $log$ $n)$ for worst-case time complexity.
 
 ## Task4
 
@@ -50,6 +50,5 @@
 
 **Complexity Analysis**:
 - **Algorithm**: A single loop runs through each record, save each one in *sets* according to some conditions, the run another loop to find difference between them.
-- **Big O Notation**: $O(2n)$ where $n$ is the number of elements in total.
-- **Justification**: In the worst case two loops was necessary.
-The fisrt one sabe caller numbers and the second one save the rest of it. Then a second loop is need to find the difference between the lists.
+- **Big O Notation**: $O(n$ $log$ $n)$ where $n$ is the number of elements in total.
+- **Justification**: The `sorted()` method takes has $O(n$ $log$ $n)$ for worst-case time complexity.
